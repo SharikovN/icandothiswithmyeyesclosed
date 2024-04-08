@@ -5,3 +5,5 @@
 OSPF через FRR
 /etc/frr/daemons включить ospfd на yes, ребутнуть службу.
 Потом в vtysh написать passive interface default, network area 0. На концах прописать сети
+
+https://doc.s-terra.ru/rh_output/4.3/Scenarios/output/mergedProjects/ver_4_3_scn_1_18_L3_external_balancing/%D0%9D%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B0_OSPF.htm
