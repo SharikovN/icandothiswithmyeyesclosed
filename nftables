@@ -4,7 +4,7 @@
 #Не забыть systemctl start nftables
 #Не забыть в sysctl.conf включить ipv4.forwarding
 #Если не сработает, то придётся ребутнуться 
-
+# nft -f /etc/nftables.conf
 flush ruleset
 table filter {
   chain input {
