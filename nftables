@@ -1,0 +1,26 @@
+# icandothoswithmyeyesclosed
+#/etc/nftables.conf
+Не забыть включить systemctl enable nftables
+Не забыть в sysctl.conf включить ipv4.forwarding
+
+table filter {
+  chain input {
+    type filter hook input priority filter; policy accept;
+  }
+  chain forward {
+    type filter hook forward priority filter; policy accept;
+  }
+  chain output {
+    type filter hook output priority filter; policy accept;
+  }
+}
+
+table ip nat {
+  chain postrouting {
+    type nat hook postrouting priority -100;
+    oifname "enp6s0" masquerade
+  }
+  chain prerouting {
+    type nat hook prerouting priority 100; policy accept;
+  }
+}
