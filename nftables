@@ -1,11 +1,15 @@
 # icandothoswithmyeyesclosed
 #/etc/nftables.conf
 #Не забыть включить systemctl enable nftables
+#Не забыть systemctl start nftables
 #Не забыть в sysctl.conf включить ipv4.forwarding
+#Если не сработает, то придётся ребутнуться 
 
+flush ruleset
 table filter {
   chain input {
-    type filter hook input priority filter; policy accept;
+    type filter hook input priority filter;
+    iifname "enp6s0" icmp type echo-request reject;
   }
   chain forward {
     type filter hook forward priority filter; policy accept;
@@ -18,9 +22,10 @@ table filter {
 table ip nat {
   chain postrouting {
     type nat hook postrouting priority -100;
-    oifname "enp6s0" masquerade
+    oifname "enp6s0" masquerade;
   }
   chain prerouting {
-    type nat hook prerouting priority 100; policy accept;
+    type nat hook prerouting priority -100; policy accept;
+    ip daddr 2.2.1.2 tcp dport { 2222 } dnat to 192.168.3.10:22;
   }
 }
