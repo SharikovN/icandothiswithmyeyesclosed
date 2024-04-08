@@ -1,0 +1,6 @@
+apt install open-ssh-server
+etc/ssh/sshd.conf ?
+Port 
+Listen address
+uncomment password address
+systemctl restart
