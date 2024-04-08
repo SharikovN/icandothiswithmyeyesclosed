@@ -2,5 +2,5 @@ apt install openssh-server
 etc/ssh/sshd.conf ?
 Port 
 Listen address
-uncomment password address
+uncomment password auth
 systemctl restart
