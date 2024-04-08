@@ -1,4 +1,4 @@
-apt install open-ssh-server
+apt install openssh-server
 etc/ssh/sshd.conf ?
 Port 
 Listen address
