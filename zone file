@@ -1,0 +1,21 @@
+$ORIGIN rea2024.ru.
+$TTL 604000
+rea2024.ru.  IN  SOA  br-srv1.rea2024.ru. . (
+                 20240400101  ; Serial
+                 604000  ;  Refresh
+                  86400  ;  Retry
+                  2419200  ; Expire ) ; Negativa Cache TTL
+        NS  br-srv1.rea2024.ru.
+        MX 10 mail.rea2024.ru.
+br-rtr  A  192.168.2.1
+br-srv1  A  192.168.2.100
+br-srv2  A  192.168.2.200
+...
+cr-cli  A  192.168.3.100
+app  CNAME  br-srv2
+repo  CNAME cr-srv
+zabbix  CNAME  cr-srv
+grafana  CNAME  cr-srv
+ipa  CNAME  cr-srv
+logs  CNAME  br-srv1
+mail  CNAME  br-srv2
