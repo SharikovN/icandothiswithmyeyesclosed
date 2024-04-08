@@ -1,0 +1,16 @@
+view "br" {
+    match-clients { 192.168.2.0/24; };
+    zone "rea2024.ru" {
+      type master;
+      file "/opt/rea2024.ru'db.br.rea2024.ru";
+      allow-update { key rndc-key; }
+    };
+};
+
+view "all" {
+  match-clients { any; };
+  zone "rea2024.ru" {
+    type master;
+    file "/opt/rea2024/db.rea2024.ru";
+    allow-update {key rndc-key; };
+  };
