@@ -1,0 +1,23 @@
+# Файл collect.yaml
+
+- name: Collect server inventory
+  hosts: pve-servers
+  tasks:
+    - name: Get hostname
+      debug:
+        msg: "hostname: {{ ansible_hostname }}"
+    
+    - name: Get kernel version
+      debug:
+        msg: "kernel: {{ ansible_kernel }}"
+    
+    - name: Get lxc-pve version
+      command: dpkg -s lxc-pve | grep Version
+      register: lxc_pve_version
+    
+    - name: Format report
+      debug:
+        msg: "{{ 'lxc-pve: ' + lxc_pve_version.stdout_lines[0].split()[1] }}"
+
+Запуск:
+ansible-playbook collect.yaml
