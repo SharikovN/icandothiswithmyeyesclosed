@@ -1,0 +1,13 @@
+# Файл start.yaml
+
+- name: Start all virtual machines
+  hosts: pve-servers
+  tasks:
+    - name: Check if VMs are running
+      shell: 'qm list | grep running'
+      ignore_errors: yes
+      register: vm_status
+     
+    - name: Start VMs if not already running
+      shell: 'qm startall'
+      when: vm_status.rc != 0
