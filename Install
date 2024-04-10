@@ -1,0 +1,16 @@
+# Файл install.yaml
+
+- name: Update package list
+  hosts: all
+  tasks:
+    - name: Update package cache
+      apt:
+        update_cache: yes
+
+- name: Install cowsay
+  hosts: all
+  tasks:
+    - name: Install cowsay package
+      apt:
+        name: cowsay
+        state: present
